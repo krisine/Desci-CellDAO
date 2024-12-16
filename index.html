@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desci CellDAO</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="__nuxt" data-v-app="" style="background-color: transparent;">
+    <div>
+      <div data-v-d0252fe9="" class="home-page">
+        <div data-v-2786276e="" data-v-d0252fe9="" class="neuro-container">
+          <canvas data-v-2786276e="" id="neuro" width="3024" height="730"></canvas>
+        </div>
+        <div data-v-11e610ff="" data-v-d0252fe9="" class="roadmap">
+          <div data-v-11e610ff="" class="gradient-bg"></div>
+          <div data-v-11e610ff="" class="content">
+            <h2 data-v-11e610ff="" class="title">Funding Global Health and Scientific Advancement</h2>
+            <p data-v-11e610ff="" class="vision-text">Desci CellDAO is a decentralized community of researchers,
+              funders, and advocates dedicated to advancing human health,
+              scientific research, and innovation across all disciplines. By harnessing the power of blockchain and
+              decentralized
+              governance, we focus on fostering global collaboration, providing education, and funding transformative
+              research to
+              benefit humanity as a whole.</p>
+            <div data-v-11e610ff="" class="timeline">
+              <div data-v-11e610ff="" class="phase">
+                <div data-v-11e610ff="" class="phase-content appear">
+                  <div data-v-11e610ff="" class="phase-header"><span data-v-11e610ff="" class="phase-tag">Phase 1</span>
+                    <h3 data-v-11e610ff="" class="phase-title">Pioneering Novel Funding Mechanisms with Blockchain
+                      Transparency</h3>
+                  </div>
+                  <ul data-v-11e610ff="" class="phase-items">
+                    <li data-v-11e610ff="" class="phase-item">Leveraging cutting-edge blockchain technology, we create
+                      on-chain, transparent funding mechanisms that enable
+                      early-stage research and biotech startups to thrive.</li>
+                    <li data-v-11e610ff="" class="phase-item">Our community-driven token structure ensures collaborative
+                      capital
+                      allocation, aligning interests and incentivizing impactful innovation.</li>
+                  </ul>
+                </div>
+              </div>
+              <div data-v-11e610ff="" class="phase">
+                <div data-v-11e610ff="" class="phase-content phase-right appear">
+                  <div data-v-11e610ff="" class="phase-header"><span data-v-11e610ff="" class="phase-tag">Phase 2</span>
+                    <h3 data-v-11e610ff="" class="phase-title">Decentralized Research &amp; Education Network</h3>
+                  </div>
+                  <ul data-v-11e610ff="" class="phase-items">
+                    <li data-v-11e610ff="" class="phase-item">Break down barriers between academia, research and
+                      development silos</li>
+                    <li data-v-11e610ff="" class="phase-item">DeMook: Revolutionize global academic knowledge sharing
+                      and
+                      education</li>
+                    <li data-v-11e610ff="" class="phase-item">DeGit: Build decentralized open-source development network
+                    </li>
+                    <li data-v-11e610ff="" class="phase-item">DeSci: Establish cross-institutional scientific research
+                      framework</li>
+                  </ul>
+                </div>
+              </div>
+              <div data-v-11e610ff="" class="phase">
+                <div data-v-11e610ff="" class="phase-content appear">
+                  <div data-v-11e610ff="" class="phase-header"><span data-v-11e610ff="" class="phase-tag">Phase 3</span>
+                    <h3 data-v-11e610ff="" class="phase-title">Web3 Innovation Tools</h3>
+                  </div>
+                  <ul data-v-11e610ff="" class="phase-items">
+                    <li data-v-11e610ff="" class="phase-item">Deploy decentralized peer review and research bounty
+                      system
+                    </li>
+                    <li data-v-11e610ff="" class="phase-item">Launch MetaSci Project Hub for tokenized collaboration and
+                      investment</li>
+                    <li data-v-11e610ff="" class="phase-item">Implement decentralized copyright protection and content
+                      monetization</li>
+                    <li data-v-11e610ff="" class="phase-item">Create token-powered marketplace for research services
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div data-v-11e610ff="" class="phase">
+                <div data-v-11e610ff="" class="phase-content phase-right">
+                  <div data-v-11e610ff="" class="phase-header"><span data-v-11e610ff="" class="phase-tag">Phase 4</span>
+                    <h3 data-v-11e610ff="" class="phase-title">Industry Integration &amp; Ecosystem Maturity</h3>
+                  </div>
+                  <ul data-v-11e610ff="" class="phase-items">
+                    <li data-v-11e610ff="" class="phase-item">Establish partnerships with research institutions and tech
+                      companies</li>
+                    <li data-v-11e610ff="" class="phase-item">Launch MetaSci DAO for community governance</li>
+                    <li data-v-11e610ff="" class="phase-item">Create sustainable token economy for research funding</li>
+                    <li data-v-11e610ff="" class="phase-item">Develop industry-standard APIs for research collaboration
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="x-shader/x-fragment" id="vertShader">
+      precision mediump float;
+  
+      varying vec2 vUv;
+      attribute vec2 a_position;
+  
+      void main() {
+          vUv = .5 * (a_position + 1.);
+          gl_Position = vec4(a_position, 0.0, 1.0);
+      }
+  </script>
+  <script type="x-shader/x-fragment" id="fragShader">
+      precision mediump float;
+  
+      varying vec2 vUv;
+      uniform float u_time;
+      uniform float u_ratio;
+      uniform vec2 u_pointer_position;
+      uniform float u_scroll_progress;
+  
+      vec2 rotate(vec2 uv, float th) {
+          return mat2(cos(th), sin(th), -sin(th), cos(th)) * uv;
+      }
+  
+      float neuro_shape(vec2 uv, float t, float p) {
+          vec2 sine_acc = vec2(0.);
+          vec2 res = vec2(0.);
+          float scale = 8.;
+  
+          for (int j = 0; j < 15; j++) {
+              uv = rotate(uv, 1.);
+              sine_acc = rotate(sine_acc, 1.);
+              vec2 layer = uv * scale + float(j) + sine_acc - t;
+              sine_acc += sin(layer);
+              res += (.5 + .5 * cos(layer)) / scale;
+              scale *= (1.2 - .07 * p);
+          }
+          return res.x + res.y;
+      }
+  
+      void main() {
+          vec2 uv = .5 * vUv;
+          uv.x *= u_ratio;
+  
+          vec2 pointer = vUv - u_pointer_position;
+          pointer.x *= u_ratio;
+          float p = clamp(length(pointer), 0., 1.);
+          p = .5 * pow(1. - p, 2.);
+  
+          float t = .001 * u_time;
+          vec3 color = vec3(0.);
+  
+          float noise = neuro_shape(uv, t, p);
+  
+          noise = 1.2 * pow(noise, 3.);
+          noise += pow(noise, 10.);
+          noise = max(.0, noise - .5);
+          noise *= (1. - length(vUv - .5));
+  
+          color = normalize(vec3(.2, .5 + .4 * cos(3. * u_scroll_progress), .5 + .5 * sin(3. * u_scroll_progress)));
+  
+          color = color * noise;
+  
+          gl_FragColor = vec4(color, noise);
+      }
+  </script>
+  <!-- partial -->
+  <script src="./script.js"></script>
+</body>
+<script type="module" src="/src/main.js"></script>
+
+</html>
