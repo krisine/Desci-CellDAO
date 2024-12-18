@@ -1,4 +1,6 @@
 import './style.css'
+import './header.css'
+import './footer.css'
 
 const containerEl = document.querySelector('.container');
 const canvasEl = document.querySelector('canvas#neuro');
