@@ -45,7 +45,7 @@
     height: 100%;
     justify-content: space-between;
     margin: 0 auto;
-    max-width: 80rem;
+    max-width: 55rem;
     padding: 0 clamp(1rem,3vw,2rem)
 }
 
